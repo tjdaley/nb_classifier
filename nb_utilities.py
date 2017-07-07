@@ -12,7 +12,6 @@ import equivalencer
 import labels
 import numpy 		 as np
 import nltk
-import probabilities as prob
 import re
 import stop_words
 import string
@@ -28,7 +27,7 @@ def load_words(filename):
 	
 		BEGIN:VEVENT
 		DESCRIPTION:text we are to process and classify
-		CLASS:integer which is an index into labels.LABELS[]
+		CLASS:Name of class to which this document belongs
 		END:VEVENT
 	
 	The file will have one or more paragraphs like that.
@@ -106,7 +105,7 @@ def load_feature_sets(filename, word_features):
 			elif line[:class_prefix_len] == class_prefix:
 				classification = line[class_prefix_len:-1]
 				if classification not in labels.LABELS:
-					print ("%-Invalid docuoment classification:", classification)
+					print ("%-Invalid document classification:", classification)
 			elif line[:-1] == "END:VEVENT":
 				featuresets.append((find_features(extract_words(description), word_features), classification))
 	fin.close()
@@ -164,49 +163,9 @@ def extract_words(s, KEEPSTOPWORDS = False):
 			
 	return filteredWords
 
-# # # # # # # # # #
-# OLD FUNCTIONS FROM ORIGINAL CLASSIFIER
-# Can probably be tossed
-# # # # # # # # # #
-
-
-def create_vocabulary_vector(wordVector, vocabList):
-	vocabVector = [0]*len(vocabList)
-
-	for word in wordVector:
-		if word in vocabList:
-			vocabVector[vocabList.index(word)] += 1
-	
-	return vocabVector
-
-# The Naive Bayes Classifier. Pretty simple once you get it trained!
-def classifyNB(vec2Classify):
-	pclass = [0.0] * len(labels.LABELS)
-	
-	for labelIndex in range(len(labels.LABELS)):
-		# Really should not have categories with a zero probability. That indicates
-		# a categorization error. But it can happen and we don't need it to trigger
-		# errors in our program.
-		if (prob.pLabels[labelIndex] != 0.0):
-			pclass[labelIndex] = sum(vec2Classify * prob.pVector[labelIndex]) + np.log(prob.pLabels[labelIndex])
-
-	return pclass
-
 def isnumeric(s):
     try:
         float(s)
         return True
     except ValueError:
         return False
-	
-# returns the index of the maximum, non-zero number
-def max_index(theArray):
-	maxi = 0
-	prevVal = theArray[0]
-	
-	for i in range(len(theArray)):
-		if (theArray[i] > prevVal and theArray[i] != 0):
-			maxi = i
-			prevVal = theArray[i]
-		
-	return maxi

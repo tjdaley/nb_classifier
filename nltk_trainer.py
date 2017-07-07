@@ -27,8 +27,8 @@ pickleFile = "naivebayes"
 # Set-up argument parser
 parser = argparse.ArgumentParser(description="Train and pickle a Naive Bayes classifier")
 parser.add_argument("file", help="File to process")
-parser.add_argument("-o", "--output", help="Output file to persist classifier to.", default=pickleFile)
-parser.add_argument("-s", "--separate", help="Should input files be separated into training and testing sets? [no]" , action="store_true")
+parser.add_argument("-o", "--output", help="Output file to persist classifier to. "+pickleFile+"]", default=pickleFile)
+parser.add_argument("-s", "--separate", help="Should input files be separated into training and testing sets? [NO]" , action="store_true")
 args = parser.parse_args()
 
 # Name of file to save classifier to once it is trained.

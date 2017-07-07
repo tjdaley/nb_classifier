@@ -1,1 +1,0 @@
-LABELS = ["Abusive", "Not Abusive"]
