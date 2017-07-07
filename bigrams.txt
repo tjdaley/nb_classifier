@@ -1,0 +1,8 @@
+child support:childsupport
+dead beat:deadbeat
+spousal support:spousalsupport
+not paying:notpaying
+not paid:notpaying
+not follow:enforce
+not following:enforce
+behind on:notpaying

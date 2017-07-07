@@ -1,0 +1,10 @@
+annulment:annullment,anullment,anulment
+attorney:lawyer,lawyers,attorneys,attornies
+child:son,daughter,children,kid,kiddo,kids,kiddos,baby,babies,minor,daughters,sons,childs,childrens,girl,boy
+enforce:collect,ignore,follow
+modification:modify,modified,change,lower,raise,decrease,increase,changing,lowering,raising,decreasing,more,less
+niece:neice
+order:decree
+parent:mother,mom,mommy,father,dad,daddy,ex
+relative:nephew,niece,cousin
+spouse:husband,wife,hubby,husbands,wifes,wive,wives

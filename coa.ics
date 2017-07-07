@@ -1,0 +1,348 @@
+BEGIN:VEVENT
+DESCRIPTION: I want a divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:I need a divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Help me get a divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:File for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Get out of my marriage
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Dissolve marriage
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Help me file for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:I am ready for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Time to get a divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:my ex is Not paying child support
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Collect child support from my ex
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Enforce child support on my ex
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Not getting child support
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Need child support
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Modify child custody
+CLASS:MODP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Not following possession order
+CLASS:ENFP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Ignoring possession order
+CLASS:ENFP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Ignoring child support order
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:wife has filed for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:husband has filed for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:spouse filed for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:served with divorce papers
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:served with petition for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:draft petition for divorce
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:adopt my nephew
+CLASS:ADOP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:adopt a child
+CLASS:ADOP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:adoption
+CLASS:ADOP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:need to put dad on child support
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:need to put mom on child support
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:need to put parent on child support
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:annulment
+CLASS:ANNU
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:dead beat dad not paying support
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:i want out of my marriage
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Can i fix my erroneous divorce decree
+CLASS:MODP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:What happens if I missed my Child Support Modification Hearing?
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Can I be forced into an agreement for children that were born during my marriage
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:child support question
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Can my husbands lawyer inform his employer to stop dispersing court ordered child support through a wage withholding order
+CLASS:ENFS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Is there anything I can do to get my back child support removed without having to pay for it
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:can i lower child support
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Can I get a restriction lifted placed on me through child support order
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:how to get back child support stopped
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:I recieved a child support modification order today and i need to file an answer where can i find the forms
+CLASS:MODS
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Hello! How can I serve Child Support documents in Nebraska if I am in Texas
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:My child father wants to terminate his rights because he don't want to pay child support
+CLASS:TERM
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:My ex husband slapped our 10 yr old son in the face while he was drunk, what should i do
+CLASS:FVPO
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:How do I establish paternity, and at least get visitation of my son
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:How should I file my divorce to ensure I get legal custody of my son
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:If i give up my rights voluntarily, will this CPS case against me be closed
+CLASS:TERM
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:slap
+CLASS:FVPO
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:How to I file for sole custody with supervised visitation and no over night visits
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Fastest way to get custody or guardianship
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Where can I get Amended Divorce Petition form
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:How to get divorced when she doesn't want it
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:How do you file contempt on a mediated settlement agreement
+CLASS:DIV
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Can I move out at 17 in the state of Texas without my parents consent
+CLASS:EMAN
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Emancipation
+CLASS:EMAN
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:removal disabilities of minority
+CLASS:EMAN
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:Terminating parental rights if youre a convicted felon with no relationship with the child
+CLASS:TERM
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:What can my husband do after a divorce decree has not been followed pertaining to visitations with his daughters
+CLASS:ENFP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:What are the forms i need to file a petition to adopt my stepdaughter
+CLASS:ADOP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:can i do the adoption without a lawyer
+CLASS:ADOP
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:what can i do if a girl is trying to get child support 12 years later
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:get visitation
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:establish paternity
+CLASS:SAPCR
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:i need to lower my child support
+CLASS:MODS
+SCORE:0
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:how do i modify child support
+CLASS:MODS
+SCORE:0
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:i need to increase my child support
+CLASS:MODS
+SCORE:0
+END:VEVENT
+
+BEGIN:VEVENT
+DESCRIPTION:dad is not paying child support as ordered
+CLASS:ENFS
+SCORE:0
+END:VEVENT
