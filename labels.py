@@ -10,5 +10,12 @@ LABELS = {
 	"TERM": "Termination",
 	"FVPO": "Protective Order",
 	"EMAN": "Emancipation of Minor",
-	"ANNU": "Annulment"
+	"ANNU": "Annulment",
+	"Nonex": "None",
+	"MENU": "Show Menu",
+	"IDENTIFY": "Identify",
+	"PROF": "Show Profile",
+	"ANSW": "Original Answer",
+	"QDRO": "QDRO",
+	"RELOAD": "Reload Profile"
 }

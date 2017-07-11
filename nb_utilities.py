@@ -9,6 +9,7 @@
 
 import bigrammer
 import equivalencer
+import json
 import labels
 import numpy 		 as np
 import nltk
@@ -19,7 +20,27 @@ import string
 BIGRAMMER    = False
 EQUIVALENCER = False
 
-def load_words(filename):
+def load_words(filename, wordTag="DESCRIPTION"):
+	"""
+	Dispatch to a word-loading function based on file type.
+	
+	We can load ICS and JSON files.
+	:param filename: Name of the file to process.
+	:type  filename: string
+	:param wordTag: Name of tag to look for to find the words we'll process
+	:type wordTag: string
+	:return: list of all extracted words found in all documents
+	:rtype: list
+	"""
+	if filename.lower().endswith(".json"):
+		return load_words_json(filename, wordTag.lower())
+	elif filename.lower().endswith(".ics"):
+		return load_words_ics(filename, wordTag.upper())
+	else:
+		print ("Unrecognized file type")
+		return None
+
+def load_words_ics(filename, wordTag="DESCRIPTION"):
 	"""
 	Load all words from an ics formatted file.
 	
@@ -37,11 +58,13 @@ def load_words(filename):
 	
 	:param filename: Name of the file to process.
 	:type  filename: string
+	:param tag: Name of tag to look for to find the words we'll process
+	:type tag: string
 	:return: list of all extracted words found in all documents
 	:rtype: list
 	"""
 	all_words = []
-	prefix = "DESCRIPTION:"
+	prefix = wordTag + ":"
 	prefix_length = len(prefix)
 	with open(filename, "r") as fin:
 		for line in fin:
@@ -51,6 +74,42 @@ def load_words(filename):
 	fin.close()
 	return all_words
 
+def load_words_json(filename, wordTag):
+	"""
+	Load all words from an json formatted file.
+	
+	json files are formatted like this:
+	
+		{"class": "name of class to which this document belongs", "description": "text we are to process and classify"}
+		
+	e.g.
+	
+		{"class": "DIV", "description": "I want a divorce."}
+	
+	
+	This function parses the input file and creates a list of every
+	word we extract from each document, including duplicates.
+	
+	:param filename: Name of the file to process.
+	:type  filename: string
+	:param wordTag: Name of tag to look for to find the words we'll process
+	:type wordTag: string
+	:return: list of all extracted words found in all documents
+	:rtype: list
+	"""
+	all_words = []
+	N =0
+	with open(filename, "r") as fin:
+		for line in fin:
+			N += 1
+			try:
+				jsonObject = json.loads(line[:-1])
+				all_words += extract_words(jsonObject[wordTag])
+			except:
+				print ("Error processing line {}: {}".format(N, line[:-1]))
+	fin.close()
+	return all_words
+	
 def find_features(documentWords, word_features):
 	"""
 	Get a list of features (words) from a document.
@@ -73,7 +132,19 @@ def find_features(documentWords, word_features):
 		
 	return features
 	
-def load_feature_sets(filename, word_features):
+def load_feature_sets(filename, word_features, classTag="CLASS", wordTag="DESCRIPTION"):
+	"""
+	Dispatch to the feature set loader based on file type.
+	"""
+	if filename.lower().endswith(".json"):
+		return load_feature_sets_json(filename, word_features, classTag.lower(), wordTag.lower())
+	elif filename.lower().endswith(".ics"):
+		return load_feature_sets_ics(filename, word_features, classTag.upper(), wordTag.upper())
+	else:
+		print ("Unrecognized file type")
+		return None
+
+def load_feature_sets_ics(filename, word_features, classTag, wordTag):
 	"""
 	Build a list of featuresets from an ics-formatted file.
 	
@@ -85,14 +156,20 @@ def load_feature_sets(filename, word_features):
 	
 	:param filename: Name of the file to process.
 	:type  filename: string
+	:param word_features: All the features we have extracted for this classifier
+	:type word_features: dictionary
+	:param classTag: Name of the tag to look for to identify the class for training purposes
+	:type classTag: string
+	:param wordTag: Name of the tag to look for to identify the words to feed the classifier
+	:type wordTag: string
 	:return: list of all features and their corresponding classifications.
 	:rtype: list of sets
 	"""
 	featuresets = []
 	
-	desc_prefix = "DESCRIPTION:"
+	desc_prefix = wordTag + ":"
 	desc_prefix_len = len(desc_prefix)
-	class_prefix = "CLASS:"
+	class_prefix = classTag + ":"
 	class_prefix_len = len(class_prefix)
 	
 	description = ""
@@ -111,9 +188,50 @@ def load_feature_sets(filename, word_features):
 	fin.close()
 	
 	return featuresets
+	
+def load_feature_sets_json(filename, word_features, classTag, wordTag):
+	"""
+	Build a list of featuresets from a json-formatted file.
+	
+	Given a filename to be loaded, which file contains json-formated objects
+	documented above, create a list of features. The list of features
+	is a list. Each item of the list is a set wherein the first entry
+	is a list of features from find_features() and the second entry is
+	the NAME of the classification, from labels.LABELS[].
+	
+	:param filename: Name of the file to process.
+	:type  filename: string
+	:param word_features: All the features we have extracted for this classifier
+	:type word_features: dictionary
+	:param classTag: Name of the tag to look for to identify the class for training purposes
+	:type classTag: string
+	:param wordTag: Name of the tag to look for to identify the words to feed the classifier
+	:type wordTag: string
+	:return: list of all features and their corresponding classifications.
+	:rtype: list of sets
+	"""
+	featuresets = []
+	N = 0
+	
+	with open(filename, "r") as fin:
+		for line in fin:
+			N += 1
+			try:
+				jsonObject = json.loads(line[:-1])
+				description = jsonObject[wordTag]
+				classification = jsonObject[classTag]
+				if classification not in labels.LABELS:
+					print ("%-Invalid document classification:", classification)
+				else:
+					featuresets.append((find_features(extract_words(description), word_features), classification))
+			except:
+				print ("Error processing line {}: {}".format(N, line[:-1]))
+				
+	fin.close()
+	
+	return featuresets
 
-
-def extract_words(s, KEEPSTOPWORDS = False):
+def extract_words(s, KEEPSTOPWORDS = True):
 	"""Keep"""
 	global EQUIVALENCER
 	global BIGRAMMER

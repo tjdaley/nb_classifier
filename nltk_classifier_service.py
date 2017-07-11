@@ -72,7 +72,7 @@ def restore_word_features(filename):
 	
 def log_response(document, classification, confidence):
 	if LOGGING:
-		LOGFILE.write("BEGIN:VEVENT\nDESCRIPTION:{}\nCLASS:{}\nSCORE:{}\nEND:VEVENT\n\n".format(document, classification, confidence))
+		LOGFILE.write('{"description": "{}", "class": "{}", "score":{}}\n'.format(document, classification, confidence))
 		
 def open_log_file(filename):
 	global LOGFILE
@@ -87,16 +87,21 @@ def close_log_file():
 # I N T E R N A L   C L A S S E S
 # # # # # # # # # #
 class Classify(Resource):
-	def get(self, document):
-		verbose = request.args.get("verbose") != None
-		zeros   = request.args.get("zeros")   != None
-		words = util.extract_words(document)
-		likely = classifier.classify(util.find_features(util.extract_words(document), word_features))
-		pdist  = classifier.prob_classify(util.find_features(util.extract_words(document), word_features))
+	def get(self):
+		verbose  = request.args.get("verbose") != None
+		zeros    = request.args.get("zeros")   != None
+		document = request.args.get("q")
+		words    = util.extract_words(document)
+		likely   = classifier.classify(util.find_features(util.extract_words(document), word_features))
+		pdist    = classifier.prob_classify(util.find_features(util.extract_words(document), word_features))
 		log_response(document, likely, pdist.prob(likely))
-		result = {'intent': {'name':likely, 'score':'%.4f'%(pdist.prob(likely))}}
+		
+		# Create a LUIS-compatible response
+		result = {'topScoringIntent': {'intent':likely, 'score':'%.4f'%(pdist.prob(likely))}}
+		result["query"] = document
+		result["entities"] = []
 		if verbose:
-			result["intents"] = [{'name':sample, 'score':'%.4f'%(pdist.prob(sample))} for sample in pdist.samples() if ((pdist.prob(sample) > 0.00009) or zeros)]
+			result["intents"] = [{'intent':sample, 'score':'%.4f'%(pdist.prob(sample))} for sample in pdist.samples() if ((pdist.prob(sample) > 0.00009) or zeros)]
 			result["words"]   = [word for word in words]
 
 		return jsonify(result)
@@ -107,7 +112,7 @@ class Classify(Resource):
 
 # Defaults
 pickleFile = "naivebayes"
-responseFile = "classifier_responses.ics"
+responseFile = "classifier_responses.json"
 
 # Set-up argument parser
 parser = argparse.ArgumentParser(description="Restore and use an NLTK classifier")
@@ -128,7 +133,7 @@ if args.output:
 	print ("Logging responses to", args.output)
 	
 # Add restful service routes
-api.add_resource(Classify, '/classify/<document>')
+api.add_resource(Classify, '/classify')
 
 # Start the service
 if __name__ == '__main__':
