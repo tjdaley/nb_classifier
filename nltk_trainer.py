@@ -49,7 +49,7 @@ print (all_words.most_common(50))
 word_features = list(all_words.keys())[:3000]
 featuresets = util.load_feature_sets(filename, word_features)
 
-#random.shuffle(featuresets)
+random.shuffle(featuresets)
 
 # Create training and testing sets
 training_set = ()
@@ -85,7 +85,7 @@ for featureset in featuresets:
 		print ("-----------------------------------")
 	i += 1
 	
-classifier.show_most_informative_features(50)
+#classifier.show_most_informative_features(50)
 
 # Save the trained classifier for later use
 fout = open(pickleFile+".pickle", "wb")

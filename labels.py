@@ -17,5 +17,7 @@ LABELS = {
 	"PROF": "Show Profile",
 	"ANSW": "Original Answer",
 	"QDRO": "QDRO",
-	"RELOAD": "Reload Profile"
+	"RELOAD": "Reload Profile",
+	"LSEP": "Legal Separation",
+	"$DIV": "Question: Divorce Cost"
 }

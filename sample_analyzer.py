@@ -40,8 +40,11 @@ def analyze_and_plot(filename):
 			k = phraseMunger(line[:-1])
 			if k not in phrases:
 				phrases[k] = N
+				if args.nodupe:
+					print (json.dumps(jsonObject))
 			else:
-				print ("Line #{} appears to be a duplicate of line #{}".format(N, phrases[k]))
+				if not args.nodupe:
+					print ("Line #{} appears to be a duplicate of line #{}".format(N, phrases[k]))
 
 	# Show the bar chart
 	if len(counts) > 0:
@@ -65,15 +68,10 @@ def phraseMunger(phrase):
 # Set-up argument parser
 parser = argparse.ArgumentParser(description="Analyze a training set")
 parser.add_argument("file", help="File to process")
-parser.add_argument("-c", "--continuous", help="If specified, file will be reanalyzed everytime the user closes the plot window.", action="store_true")
+parser.add_argument("--nodupe", help="Remove duplicates. Errors will not be printed.", action="store_true")
 args = parser.parse_args()
 
 # Input training files
 filename = args.file
 
-if args.continuous:
-	while True:
-		analyze_and_plot(filename)
-		time.sleep(3)
-else:
-	analyze_and_plot(filename)
+analyze_and_plot(filename)

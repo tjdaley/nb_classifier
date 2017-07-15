@@ -231,7 +231,7 @@ def load_feature_sets_json(filename, word_features, classTag, wordTag):
 	
 	return featuresets
 
-def extract_words(s, KEEPSTOPWORDS = True):
+def extract_words(s, KEEPSTOPWORDS = False):
 	"""Keep"""
 	global EQUIVALENCER
 	global BIGRAMMER
