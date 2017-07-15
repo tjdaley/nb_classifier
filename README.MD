@@ -100,3 +100,11 @@ optional arguments:
   -l LISTEN, --listen LISTEN
                         TCP port to listen on. [8282].
 ```
+
+# Author
+Thomas J. Daley, J.D. <tjd@powerdaley.com>
+
+# Keywords
+python
+naive bayes classifier
+restful web service
