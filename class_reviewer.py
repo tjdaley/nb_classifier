@@ -1,8 +1,7 @@
-# JDBOT - Classifier
+# JDBOT - Classification Reviewer
 #
-# Restores a trained NLTK classifier, listens for classification requests,
-# processes the requests, and saves the result to a file for later
-# supervised fine-tuning.
+# Reads through a file of json-formatted objects and lets the user
+# review the classification of each record.
 #
 # Copyright (c) 2017 by Thomas J. Daley, J.D.
 # Author: Thomas J. Daley, J.D. <tjd@jdbot.us>
