@@ -3,6 +3,10 @@
 There are a number of programs in this project archive, each leading toward a trained
 classifier that can be run as a web service.
 
+These programs fit together like this:
+
+![presentation1](https://user-images.githubusercontent.com/14339485/28243382-e18e3d28-698c-11e7-9bfe-82faecacb688.png)
+
 # Applications
 ## sample_analyzer.py
 This program goes through a training file, looks for duplicate utterances, and visually illustrates the distribution
