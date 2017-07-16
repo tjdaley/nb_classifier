@@ -10,9 +10,9 @@
 #
 
 import argparse
-import equivalencer
-import labels
-import nb_utilities as util
+from lib import equivalencer
+from lib import labels
+from lib import nb_utilities as util
 import nltk
 import pickle
 import random

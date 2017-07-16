@@ -9,7 +9,7 @@
 # For license information, see LICENSE.TXT
 #
 
-import labels
+from lib import labels
 import json
 import os
 import wx

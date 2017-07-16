@@ -12,9 +12,11 @@
 #	>>> 'spouse'
 #
 # @version 1.0.0
+import os
+
 class Equivalencer():
 
-	def __init__(self, filename="equivalences.txt"):
+	def __init__(self, filename="lib"+os.path.sep+"equivalences.txt"):
 		"""
 		Class constructor.
 		

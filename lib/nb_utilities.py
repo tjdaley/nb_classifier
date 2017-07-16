@@ -7,14 +7,14 @@
 #
 # @version 1.0.0
 
-import bigrammer
-import equivalencer
+from lib import bigrammer
+from lib import equivalencer
 import json
-import labels
+from lib import labels
 import numpy 		 as np
 import nltk
 import re
-import stop_words
+from lib import stop_words
 import string
 
 BIGRAMMER    = False

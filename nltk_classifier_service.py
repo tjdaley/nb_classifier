@@ -11,8 +11,8 @@
 #
 
 import argparse
-import labels
-import nb_utilities as util
+from lib import labels
+from lib import nb_utilities as util
 import nltk
 import pickle
 

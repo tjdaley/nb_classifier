@@ -13,9 +13,11 @@
 #	>>> 'I need to lower my childsupport'
 #
 # @version 1.0.0
+import os
+
 class Bigrammer():
 
-	def __init__(self, filename="bigrams.txt"):
+	def __init__(self, filename="lib"+os.path.sep+"bigrams.txt"):
 		"""
 		Class constructor.
 		
