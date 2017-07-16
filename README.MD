@@ -88,6 +88,159 @@ the ```class_reviewer.py``` application for refinement. The output from that can
 training file and the classifier can then be retrained with the benefit of the new information
 received from users and their use cases.
 
+### Request syntax
+```
+http://127.0.0.1/classify?verbose&zeros&q=i+want+a+divorce
+```
+#### /classify
+This indicates which service you are trying to reach. At this time, ```classify``` is the only service available.
+
+#### q
+REQUIRED
+
+Provides the query string that is to be classified. Needs to be URL-encoded.
+
+#### verbose
+* OPTIONAL
+* DEFAULT = False
+
+If present, this argument will cause the classifier to respond with a list of all non-zero classification scores.
+
+#### zeros
+* OPTIONAL
+* DEFAULT = False
+
+If present with the ```verbose``` flag, then even classifications that have a zero score will be returned in the response.
+
+### Response Format
+
+Query
+```http://127.0.0.1:8282/classify?i+want+a+dvorce```
+
+Response
+```
+{
+  "entities": [],
+  "query": "i want a divorce",
+  "topScoringIntent": {
+    "intent": "DIV",
+    "score": "0.9851"
+  }
+}
+```
+
+Query
+```http://127.0.0.1:8282/classify?i+want+a+divorce&verbose```
+
+Response
+```
+{
+  "entities": [],
+  "intents": [
+    {
+      "intent": "QDRO",
+      "score": "0.0147"
+    },
+    {
+      "intent": "DIV",
+      "score": "0.9851"
+    },
+    {
+      "intent": "MODS",
+      "score": "0.0001"
+    }
+  ],
+  "query": "i want a divorce",
+  "topScoringIntent": {
+    "intent": "DIV",
+    "score": "0.9851"
+  },
+  "words": [
+    "divorc"
+  ]
+}
+```
+
+NOTE: This classifier service does NOT support entity recognition at this time. The entities array is provided in the response for
+LUIS compatibility.
+
+NOTE: The words array shows you what words were submitted to the classifier. This is what is left over after stop-words are
+eliminated and the query is processed by a stemmer and a bi-grammer.
+
+For example, the query: ```q=baby+daddy+not+paying+child+support``` would result in this words array (subject to change):
+```
+"words": [
+    "child",
+    "parent",
+    "notpay",
+    "childsupport"
+  ]
+```
+
+Notice how "baby daddy" is transformed to "parent" and "child support" is bi-grammed into "childsupport" so that it's treated as a
+single entity. (This is a clue that we're using a Naive Bayes classifier and trying to work around some of the naivete.)
+
+Query
+```http://127.0.0.1:8282/classify&q=i+want+a+divorce&verbose&zeros```
+
+Response
+```
+{
+  "entities": [],
+  "intents": [
+    {
+      "intent": "QDRO",
+      "score": "0.0147"
+    },
+    {
+      "intent": "DIV",
+      "score": "0.9851"
+    },
+    {
+      "intent": "MODS",
+      "score": "0.0001"
+    },
+    {
+      "intent": "SAPCR",
+      "score": "0.0001"
+    },
+    {
+      "intent": "MODP",
+      "score": "0.0000"
+    },
+    {
+      "intent": "$DIV",
+      "score": "0.0000"
+    },
+    {
+      "intent": "ENFS",
+      "score": "0.0000"
+    },
+    {
+      "intent": "LSEP",
+      "score": "0.0000"
+    },
+    {
+      "intent": "ANSW",
+      "score": "0.0000"
+    },
+    {
+      "intent": "ANNU",
+      "score": "0.0000"
+    }
+  ],
+  "query": "i want a divorce",
+  "topScoringIntent": {
+    "intent": "DIV",
+    "score": "0.9851"
+  },
+  "words": [
+    "divorc"
+  ]
+}
+```
+
+
 Here is the command help:
 ```
 usage: nltk_classifier_service.py [-h] [-p PICKLE] [-o OUTPUT] [-l LISTEN]
